@@ -10,15 +10,28 @@
                 show the message
             </span>
         </div>
+        <hr>
+        <h2>Conditionals and Loops</h2>
         <div id="app-3">
             <p v-if="seen">Now you can see me</p>
         </div>
+        <br />
         <div id="app-4">
             <ol>
                 <li v-for="todo in todo_example">
                     {{todo.text}}
                 </li>
             </ol>
+        </div>
+        <br />
+        <h2>Handling User Input</h2>
+        <div id="app-5">
+            <p>{{message}}</p>
+            <button v-on:click="reverseMessage">Reverse Message</button>
+        </div>
+        <div id="app-6">
+            <p>{{message}}</p>
+            <input v-model="message">
         </div>
     </body>
     <script>
@@ -50,5 +63,23 @@
             }
         })
         //在控制台里，输入 app4.todo_example.push({ text: 'add new project' })，你会发现列表中添加了一个新项。
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                message: 'Hello Vue JS!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                  }
+            }
+        })
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+        //Vue also provides the v-model directive that makes two-way binding between form input and app state a breeze:
     </script>
 </html>
